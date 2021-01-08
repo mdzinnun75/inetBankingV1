@@ -1,3 +1,2 @@
-cd E:
-cd Eclipse Projects\inetBankingV1
+cd E:\Eclipse Projects\inetBankingV1
 mvn clean install

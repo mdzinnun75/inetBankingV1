@@ -12,10 +12,11 @@
 	
   <test name="BankingAppTest">
   <parameter name="browser" value="chrome"></parameter>
+  
     
     <classes>
       <class name="com.inetBanking.testCases.TC_LoginTest_001"/>
-      <!--  class name="com.inetBanking.testCases.TC_LoginTest_002"/-->
+      <class name="com.inetBanking.testCases.TC_LoginTest_002"/>
        <class name="com.inetBanking.testCases.TC_AddCustomer_003"/>
       
     </classes>

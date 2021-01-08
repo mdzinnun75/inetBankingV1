@@ -1,6 +1,7 @@
 package com.inetBanking.utilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+//import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 
@@ -40,7 +42,7 @@ public class Reporting extends TestListenerAdapter{
 		
 		extent.attachReporter(htmlReporter);
 		extent.setSystemInfo("Host name", "localhost");
-		extent.setSystemInfo("Environment", "Windowa 10");
+		extent.setSystemInfo("Environment", "Windows 10");
 		extent.setSystemInfo("Tester name", "Zinnun");
 		
 		htmlReporter.config().setDocumentTitle("InetBanking Test Project");
@@ -62,11 +64,13 @@ public class Reporting extends TestListenerAdapter{
 		logger.log(Status.FAIL, MarkupHelper.createLabel(tr.getName(), ExtentColor.RED));
 		
 		String screenshotPath= System.getProperty("user.dir")+"\\Screenshots\\"+tr.getName()+".png";
+		
 		File f = new File(screenshotPath);
+		
 		if (f.exists()) {
 			try {
 				logger.fail("Screenshot is below: " + logger.addScreenCaptureFromPath(screenshotPath));	//logger.addScreencastFromPath(screenshotPath
-			} catch (Exception e) {
+			} catch (IOException e) {
 										e.printStackTrace();
 			}
 		}
@@ -79,7 +83,7 @@ public class Reporting extends TestListenerAdapter{
 		
 	}
 	
-	public void onFinish(ITestResult testcontext) {
+	public void onFinish(ITestContext testcontext) {
 		extent.flush();
 	}
 	
