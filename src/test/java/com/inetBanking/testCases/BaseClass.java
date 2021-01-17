@@ -6,12 +6,15 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -45,11 +48,17 @@ public class BaseClass {
 			if(br.equals("chrome")) {
 			System.setProperty(rc.getChrome(),rc.getChromePath());
 			driver=new ChromeDriver();
+			driver.manage().window().maximize();
+			
+			
 			}
+			
 			else if (br.equals("firefox")) {
 				System.setProperty(rc.getFirefox(),rc.getGeckoPath());
 				driver=new FirefoxDriver();
-			}else {
+			}
+			
+			else {
 				System.setProperty(rc.getEdge(),rc.getEdgePath());
 				driver=new EdgeDriver();
 			}

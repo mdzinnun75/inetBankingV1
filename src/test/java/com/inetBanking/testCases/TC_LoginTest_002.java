@@ -20,33 +20,34 @@ public class TC_LoginTest_002 extends BaseClass{
 		loginPage lp = new loginPage(driver);
 		lp.setUsername(user);
 		log.info("username entered");
+		
 		lp.setPassword(pwd);
 		log.info("password entered");
-		lp.clickSubmit();
-		
-		Thread.sleep(3000);
-		
-		
-		if (isAlertPresent()==true) {
-			
-			driver.switchTo().alert().accept();		//close alert
-			driver.switchTo().defaultContent();
-			Assert.assertTrue(false);
-			log.warn("login failed");
-			
-		}else {
-			Assert.assertTrue(true);
-			log.info("login passed");
-			lp.clickLogOut();
-			driver.switchTo().alert().accept(); 	//close logout alert
-			driver.switchTo().defaultContent();
-			
 
-		}
+		lp.clickSubmit();
+		//Thread.sleep(3000);
 		
 		
-		
-		}
+			if (isAlertPresent()==true) {
+				
+				driver.switchTo().alert().accept();		//close alert
+				driver.switchTo().defaultContent();
+				Assert.assertTrue(false);
+				log.warn("login failed");
+				
+			}else {
+				
+				Assert.assertTrue(true);
+				log.info("login passed");
+				//log out xpath. sleep--> implicit wait
+				lp.clickLogOut();
+				Thread.sleep(2000);
+				driver.switchTo().alert().accept(); 	//close logout alert
+				driver.switchTo().defaultContent();
+			}
+	}
+	
+	
 	
 	public boolean isAlertPresent() {			//user defined method created to check alert is present or not
 		try {

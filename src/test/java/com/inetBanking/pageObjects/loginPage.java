@@ -22,7 +22,7 @@ public class loginPage extends BaseClass {
 		}
 		
 		
-		@FindBy(xpath="//tbody/tr[1]/td[2]/input[1]")
+		@FindBy(xpath="//tbody/tr[1]/td[2]/input[1]")		//xpath changed --> data driven tests are working
 		@CacheLookup
 		WebElement txtUsername;
 		
